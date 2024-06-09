@@ -57,6 +57,7 @@ def load_local():
     files = []
     try:
         files = os.listdir('.\\local_images\\')
+        files.sort(key=lambda x: int(x[:-4]))
     except:
         pass
 
