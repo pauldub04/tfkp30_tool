@@ -1,6 +1,6 @@
 Запуск
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt  # в 1 раз
 python main.py
 ```
 
