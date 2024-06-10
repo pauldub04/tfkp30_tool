@@ -10,7 +10,8 @@ import os
 
 
 # changeable:
-images_url = 'https://paste.gg/p/egorkaalexxx/521d4ebf4fac45f7be200c78dff60553/files/23437fa118c54b8eb15ba9ec5af405c3/raw'
+local_path = 'C:\\local_images'
+images_url = 'https://paste.gg/p/alexaigor/8b53ee4da6dc4e85b7415ee8496d5562/files/a7353676fe404f2f87a79d366a00d74b/raw'
 opacity = 100
 opacity_step = 20
 width = 400
@@ -51,12 +52,12 @@ def open_file(number):
 
 
 def load_local():
-    global total_cnt, local_cnt, local_loaded
+    global total_cnt, local_cnt, local_loaded, local_path
     if local_loaded:
         return
     files = []
     try:
-        files = os.listdir('.\\local_images\\')
+        files = os.listdir(local_path)
         files.sort(key=lambda x: int(x[:-4]))
     except:
         pass
@@ -64,7 +65,7 @@ def load_local():
     total_cnt = local_cnt = 0
     for file in files:
         try:
-            image = Image.open(f'.\\local_images\\{file}')
+            image = Image.open(f'{local_path}\\{file}')
             image.save(f'.\\all_images\\{total_cnt}.png')
             total_cnt += 1
             local_cnt += 1
@@ -72,7 +73,6 @@ def load_local():
             continue
 
     local_loaded = True
-    # print('loaded local', local_cnt)
 
 
 def load_from_url():
@@ -97,14 +97,12 @@ def load_from_url():
             saved_cnt += 1
         except:
             continue
-    # print('loaded from url', saved_cnt)
 
 
 def load_images():
     global need_redraw, total_cnt
     load_local()
     load_from_url()
-    # print('now', total_cnt, 'images')
     need_redraw = True
 
 
@@ -239,9 +237,3 @@ def run():
 
 if __name__ == '__main__':
     run()
-    # while True:
-    #     try:
-    #         run()
-    #         break
-    #     except:
-    #         continue
