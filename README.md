@@ -22,6 +22,8 @@ esc - выйти полностью из приложения \
 
 Эти параметры можно менять
 ```python
+local_path = 'C:\\local_images'
+                           # путь к локальным фото
 images_url = 'https://paste.gg/p/egorkaalexxx/521d4ebf4fac45f7be200c78dff60553/files/23437fa118c54b8eb15ba9ec5af405c3/raw'
                            # ссылка c raw текстом (там должны быть ссылки на фото)
 opacity = 100              # изначальная прозрачноть
